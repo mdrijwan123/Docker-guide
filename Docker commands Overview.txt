@@ -1,0 +1,61 @@
+->docker container run --publish 80:80 nginx
+
+Will create docker conatiner in port 80:80, the image is nginx server.
+The server runs at default localhost/
+---------------------------------------------------------------------
+If we want to see thye container list we will use:
+
+-> docker container ls
+---------------------------------------------------------------------
+For stopping the container we can use
+
+-> docker container stop {container id}
+The id can be found in container ls command.
+i.e
+-> docker container stop 45ffb
+
+Only first few digit is required.
+
+--------------------------------------------------------------------
+
+-> docker container ls -a
+I will get all the container creation and modification history.
+
+-------------------------------------------------------------------
+Note*
+
+-> docker container run 
+will start the new container so always use 'docker container start
+
+-------------------------------------------------------------------
+If we want to again create container with some name then
+-> docker container run --publish 80:80 --detach --name brothers_image nginx
+-------------------------------------------------------------------
+To see the logs write
+
+-> docker container logs "container name"
+
+-------------------------------------------------------------------
+To see the process running inside the container:
+-> docker container tops 'image name"
+-------------------------------------------------------------------
+To remove the container:
+-> docker container rm 'first id' 'second id' 
+i.e,
+-> docker container rm 05abd e7bd 45ffb 8ccda
+
+If any id doesn't remove it means its running so stop it and then remove.
+We can forcibly remove the container by
+
+--> docker container rm -f 8ccd
+-------------------------------------------------------------------
+What we can change in creation of container:
+
+-> docker container run --publish 8080:80 --name webhost -d nginx:1.11 nginx -T
+
+1) change host listening port
+2) change version of image
+3) change CMD on run
+4) change the name of image
+----------------------------------------------------------------------
+-d is short form of detached.
